@@ -1,5 +1,9 @@
 const express=require('express');
 const errorHandle = require('./middleware/errorHandler');
+const validateToken = require("./middleware/validateToken");
+
+app.use("/api/contacts", validateToken, require('./routes/contactRoute'));
+
 const dotenv=require("dotenv").config();
 const mongoose=require('mongoose');
 mongoose.connect(process.env.MONGOURL)
